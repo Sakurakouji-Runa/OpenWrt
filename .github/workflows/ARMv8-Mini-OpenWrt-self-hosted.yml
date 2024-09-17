@@ -1,4 +1,4 @@
-name: ARMv8 Mini OpenWrt
+name: ARMv8 Mini OpenWrt self hosted
 
 on:
   workflow_dispatch:
