@@ -27,10 +27,6 @@ function git_sparse_clone() {
   cd .. && rm -rf $repodir
 }
 
-# 修改golang版本见至最新，以后可能得把23改24github.com/sbwml/luci-app-mosdns
-rm -rf feeds/packages/lang/golang
-git clone https://github.com/sbwml/packages_lang_golang -b 23.x feeds/packages/lang/golang
-
 # 添加额外插件
 git clone --depth=1 https://github.com/kongfl888/luci-app-adguardhome package/luci-app-adguardhome
 git clone --depth=1 https://github.com/Jason6111/luci-app-netdata package/luci-app-netdata
@@ -121,6 +117,10 @@ sed -i 's|admin\\|admin\\/services\\|g' feeds/luci/applications/luci-app-dockerm
 
 # 取消对 samba4 的菜单调整
 # sed -i '/samba4/s/^/#/' package/lean/default-settings/files/zzz-default-settings
+
+# 修改golang版本见至最新，以后可能得把23改24github.com/sbwml/luci-app-mosdns
+rm -rf feeds/packages/lang/golang
+git clone https://github.com/sbwml/packages_lang_golang -b 23.x feeds/packages/lang/golang
 
 ./scripts/feeds update -a
 ./scripts/feeds install -a
