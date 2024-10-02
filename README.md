@@ -1,6 +1,6 @@
 ## 自用云编译openwrt固件，这个仓库fork自 [haiibo](https://github.com/haiibo/OpenWrt) ，在此感谢haiibo等各位大佬
 - 本仓库相比haiibo原版，解决了编译ssr-plus-mosdns报错、hostapd报错的问题，调整了hostname和默认IP，修改wan口为默认pppoe拨号，改了个背景。具体的修改参见[[diy-mini.sh](https://github.com/Sakurakouji-Runa/OpenWrt/blob/main/diy-mini.sh)]以及[[armv8-mini.config](https://github.com/Sakurakouji-Runa/OpenWrt/blob/main/configs/armv8-mini.config)]
-- releases里有最新的mini版固件，每周五编译一次
+- releases里有最新的mini版固件，为降低github负担，每周五编译一次
 
 <div align="center">
 <img width="768" src="https://cdn.jsdelivr.net/gh/haiibo/OpenWrt/images/openwrt.png"/>
