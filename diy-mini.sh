@@ -70,10 +70,13 @@ git clone --depth=1 https://github.com/ximiTech/luci-app-msd_lite package/luci-a
 git clone --depth=1 https://github.com/ximiTech/msd_lite package/msd_lite
 
 # MosDNS
-git clone --depth=1 https://github.com/sbwml/luci-app-mosdns package/luci-app-mosdns
 # 修改golang版本见至最新，以后可能得把23改24github.com/sbwml/luci-app-mosdns
 rm -rf feeds/packages/lang/golang
 git clone --depth=1 https://github.com/sbwml/packages_lang_golang -b 23.x feeds/packages/lang/golang
+find ./ | grep Makefile | grep v2ray-geodata | xargs rm -f
+find ./ | grep Makefile | grep mosdns | xargs rm -f
+git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
+git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
 
 # Alist
 git clone --depth=1 https://github.com/sbwml/luci-app-alist package/luci-app-alist
@@ -112,7 +115,7 @@ find package/*/ -maxdepth 2 -path "*/Makefile" | xargs -i sed -i 's/PKG_SOURCE_U
 find package/*/ -maxdepth 2 -path "*/Makefile" | xargs -i sed -i 's/PKG_SOURCE_URL:=@GHCODELOAD/PKG_SOURCE_URL:=https:\/\/codeload.github.com/g' {}
 
 # 解决编译ssr-plus的mosdns时CGO报错
-sed -i '39s/.*/GO_PKG_TARGET_VARS:=$(filter-out CGO_ENABLED=%,$(GO_PKG_TARGET_VARS)) CGO_ENABLED=1/' package/luci-app-ssr-plus/mosdns/Makefile
+# sed -i '39s/.*/GO_PKG_TARGET_VARS:=$(filter-out CGO_ENABLED=%,$(GO_PKG_TARGET_VARS)) CGO_ENABLED=1/' package/luci-app-ssr-plus/mosdns/Makefile
 
 # 取消主题默认设置
 find package/luci-theme-*/* -type f -name '*luci-theme-*' -print -exec sed -i '/set luci.main.mediaurlbase/d' {} \;
